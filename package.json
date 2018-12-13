@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "claudia-api-builder": "^4.1.1"
+    "aws-sdk": "^2.358.0",
+    "claudia-api-builder": "^4.1.1",
+    "node-fetch": "^2.3.0"
   }
 }
