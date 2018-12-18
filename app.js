@@ -39,12 +39,15 @@ api.get('/accounts', async (req) => {
 api.get('/users', function (request) { // GET all users
     return dynamoDb.scan({ TableName: 'democenterusers' })
             .promise()
-            .then(response => response.Items.map(item => {
-                let itemNoPassword = item;
-                delete itemNoPassword.password;
-                return itemNoPassword;
-            }))
+            .then(response => response.Items.map(user => {
+                const userWithoutPassword = (({userid, username}) => ({userid, username}))(user);
+                // let itemNoPassword = item;
+                // delete itemNoPassword.password;
+                // return itemNoPassword;
+                return userWithoutPassword;
+            }));
   });
+  const userWithoutPassword = (({name, age}) => ({name, age}))(user);
 
 api.get('/hello', function () {
 	return 'hello world!';
